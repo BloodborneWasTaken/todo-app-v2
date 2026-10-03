@@ -1,15 +1,12 @@
 import { Router } from "express";
-import {
-    login,
-    register,
-
-} from "./controller.js";
+import authController from "./controller.js";
+import {Authorzation} from "../../middleware/auth.js"
 
 
 const category = Router();
 
-category.get("/", register);
-category.post("/", login);
+category.post("/register", authController.register);
+category.post("/login", Authorzation,authController.login);
 
 
 export default category;
